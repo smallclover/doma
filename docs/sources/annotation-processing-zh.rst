@@ -80,18 +80,18 @@ doma.config.path
 Eclipse
 =======
 
-プロジェクトの「Properties」-「Java Compiler」-「Annotation Processing」の項目でオプションを登録します。
+project的「Properties」-「Java Compiler」-「Annotation Processing」の选项里进行设置。
 
 javac
 =====
 
--Aオプションにより登録します。
-詳細はjavacのドキュメントを参照してください。
+根据-A option进行设置。
+详细的情况请参照javac的文档。
 
 Gradle
 ======
 
-``compileJava.options.compilerArgs`` に指定します。
+指定为 ``compileJava.options.compilerArgs``  
 
 .. code-block:: groovy
 
@@ -99,10 +99,7 @@ Gradle
 
 配置文件
 ==================
-描述
+
 默认在 ``main/resources/doma.compile.config`` 里进行了配置的描述，所以不需要对build tool的每个option进行设定。
 描述的格式和properties的格式是相同的。
-デフォルトでは ``main/resources/doma.compile.config`` ファイルにオプションを記述しておくことで、
-ビルドツールごとのオプションの設定を利用する必要がなくなります。
-記述形式はプロパティファイルと同様です。
-なお、設定がバッティングした場合、ビルドツールごとのオプションの設定が優先されます。
+另外，如果配置文件发生冲突，优先使用build tool的option。
