@@ -12,8 +12,8 @@ Doma uses [Pluggable Annotation Processing API][apt] to generate source code and
 Documentation
 -------------
 
-http://doma.readthedocs.org/
-
+jp http://doma.readthedocs.org/
+zh_CN https://github.com/smallclover/doma/edit/master/docs  
 Notice
 --------
 
