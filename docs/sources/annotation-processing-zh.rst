@@ -17,26 +17,26 @@ option
 ==================
 
 doma.dao.package
-  ``@Dao`` が注釈されたインタフェースの実装クラスが生成されるパッケージ。
-  何らかの値を指定した場合、doma.dao.subpackageの指定よりも優先される。
-  デフォルトの値は、 ``@Dao`` が注釈されたインタフェースと同じパッケージ。
+  ``@Dao`` 注释的interface的实现类生成之后存放的package。
+  在指定了值的场合，优先于doma.dao.subpackage指定的值。
+  默认的值是、与 ``@Dao`` 注释的interface同一个package下。
 
 doma.dao.subpackage
-  ``@Dao`` が注釈されたインタフェースの実装クラスが生成されるサブパッケージ。
-  doma.dao.packageに値を指定していない場合にのみ有効。
-  ``@Dao`` が注釈されたインタフェースのパッケージが ``example.dao`` で、ここに指定した値が ``impl`` の場合、
-  生成されるクラスのパッケージは ``example.dao.impl`` となる。
+  ``@Dao`` 注释的interface的实现类生成之后存放的subpackage。
+  只有在doma.dao.package的值没有被指定的时候。
+  ``@Dao`` 注释的interface位于 ``example.dao`` 下、载这里指定的值是 ``impl`` 的场合、
+  生成的实现类位于 ``example.dao.impl`` 下。
 
 doma.dao.suffix
-  ``@Dao`` が注釈されたインタフェースの実装クラスの名前のサフィックス。
-  ``@Dao`` が注釈されたインタフェースの単純名が ``EmployeeDao`` で、ここに指定した値が ``Bean`` の場合、
-  生成されるクラスの単純名は ``EmployeeDaoBean`` となる。
-  デフォルトの値は ``Impl`` 。
+  ``@Dao`` 注释的interface的实现类的名字的后缀。
+  ``@Dao`` 注释的interface的名字为 ``EmployeeDao`` 这里指定的值为 ``Bean`` 的场合、
+  生成的类的名字为 ``EmployeeDaoBean`` 。
+  默认的值是 ``Impl`` 。
 
 doma.debug
-  注釈処理のデバッグ情報をログ出力するかどうか。
-  ``true`` の場合、ログ出力を行う。
-  デフォルトの値は、 ``false`` 。
+  是否以log的形式输出注释处理的debug信息
+  ``true`` 的时候，输出debug log。
+  默认值是、 ``false`` 。
 
 doma.domain.converters
   任意の型と基本型を相互変換する ``DomainConverter`` のプロバイダとなるクラスの完全修飾名のカンマ区切り。
@@ -49,19 +49,19 @@ doma.entity.field.prefix
   デフォルトの値は、 ``$`` 。
 
 doma.expr.functions
-  式コメントで利用可能な関数群を表すクラスの完全修飾名。
-  ``org.seasar.doma.expr.ExpressionFunctions`` のサブタイプでなければいけない。
-  デフォルトの値は、 ``org.seasar.doma.expr.ExpressionFunctions`` 。
+  表示注释中可用函数集的类的完全限定名称。
+  他它必须是``org.seasar.doma.expr.ExpressionFunctions`` 类的子类型
+  默认值是、 ``org.seasar.doma.expr.ExpressionFunctions`` 。
 
 doma.resources.dir
-  SQLファイルなどリソースファイルの出力先ディレクトリ。
-  絶対パスで指定する。
-  指定しない場合はクラスファイルの出力先ディレクトリが使われる。
+  SQL文件等资源文件输出的目录
+  使用绝对路径
+  如果没有指定，那默认使用class文件输出的目录。
 
 doma.sql.validation
-  SQLファイルの存在チェックとSQLコメントの文法チェックを行う場合は ``true`` 。
-  行わない場合は ``false`` 。
-  デフォルトの値は、 ``true`` 。
+  执行SQL文件存在检查和SQL comment语法检查的时候设为 ``true`` 。
+  不执行的时候设为 ``false`` 。
+  默认值是、 ``true`` 。
 
 doma.version.validation
   注釈処理によるソースコード生成で利用したDomaのバージョンと実行時のDomaのバージョンが同じであることを
@@ -74,13 +74,13 @@ doma.version.validation
   デフォルトの値は、 ``true`` 。
 
 doma.config.path
-  オプションの設定ファイルを置く場所の指定。
-  デフォルトの値は、 ``doma.compile.config``。
+  指定option设置文件的路径
+  默认值、 ``doma.compile.config``。
 
 Eclipse
 =======
 
-project的「Properties」-「Java Compiler」-「Annotation Processing」の选项里进行设置。
+project的「Properties」-「Java Compiler」-「Annotation Processing」的选项里进行设置。
 
 javac
 =====
