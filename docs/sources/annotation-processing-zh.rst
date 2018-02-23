@@ -39,14 +39,14 @@ doma.debug
   默认值是、 ``false`` 。
 
 doma.domain.converters
-  任意の型と基本型を相互変換する ``DomainConverter`` のプロバイダとなるクラスの完全修飾名のカンマ区切り。
-  クラスは ``org.seasar.doma.DomainConverters`` によって注釈されていないければいけない。
+  变换任意类型和基本类型的逗号分隔的将作为“DomainConverter”的提供者的类的完全限定名称。
+  class必须由 ``org.seasar.doma.DomainConverters`` 注释。
 
 doma.entity.field.prefix
-  ``@Entity`` が注釈されたクラスごとに生成されるタイプクラスで使用される。
-  タイプクラスのpublicなフィールド名のプレフィックス。
-  ``none`` を指定するとプレフィックスを使用しないという意味になる。
-  デフォルトの値は、 ``$`` 。
+  ``@Entity`` 注释的所有的类生成的type class中使用。
+  type class的public文件名的前缀。
+  ``none`` 值指定的时候，表示你不使用前缀。
+  默认值为、 ``$`` 。
 
 doma.expr.functions
   表示注释中可用函数集的类的完全限定名称。
@@ -64,14 +64,12 @@ doma.sql.validation
   默认值是、 ``true`` 。
 
 doma.version.validation
-  注釈処理によるソースコード生成で利用したDomaのバージョンと実行時のDomaのバージョンが同じであることを
-  チェックする場合は ``true`` 。
-  しない場合は ``false`` 。
-  Domaのあるバージョンで生成されたコードを含むライブラリを作成する場合に ``false`` を指定してビルドすると、
-  そのライブラリの再利用性が高まります。
-  ライブラリが依存するDomaのバージョンとは異なるバージョンのDomaで実行できるからです
-  （Domaのバージョンに互換性がある限りにおいて）。
-  デフォルトの値は、 ``true`` 。
+  检查注释处理生成源代码的Doma version和执行时候的Doma version是否相同的时候为 ``true`` 。
+  不检查的时候为 ``false`` 。
+  如果使用包含由某个Doma2 Version生成的代码的library的时候，设置为 ``false`` 的情况下进行build，该library的复用性会提高。
+  即使library依赖的Doma2 Version与执行的Doma2 Version不一致的时候也能够使用。
+  （只要Doma2版本兼容即可）。
+  默认值为、 ``true`` 。
 
 doma.config.path
   指定option设置文件的路径
