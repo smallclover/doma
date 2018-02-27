@@ -16,6 +16,14 @@ jp http://doma.readthedocs.org/
 
 zh_CN https://github.com/smallclover/doma/edit/master/docs  
 
+|ポジション（位置）|日本語バージョン（日语版）|中国語バージョン（中文版）|翻訳進捗（翻译进度）|チェック（校对）|
+|----------------|--------------|-----|------------------------------------|--------------|
+|/docs/sources|kotlin-support.rst|kotlin-support-zh.rst|100%|0%|
+|/docs/sources|index.rst|index-zh.rst|99%|0%|
+|/docs/sources|annotation-processing.rst|annotation-processing-zh.rst|100%|0%|
+|/docs/sources|basic.rst|basic-zh.rst|100%|0%|
+
+
 Notice
 --------
 

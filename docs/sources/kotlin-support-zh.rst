@@ -3,7 +3,7 @@ Kotlin 支持
 ==================
 
 .. contents:: 目录
-:depth: 3
+      :depth: 3
 
 Doma 实验性的支持 `Kotlin <https://kotlinlang.org/>`_ 1.1.2版本。
 

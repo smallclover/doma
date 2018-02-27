@@ -4,7 +4,7 @@ You can adapt this file completely to your liking, but it should at least
 contain the root `toctree` directive.
 
 .. image:: images/doma.png
-:height: 200px
+   :height: 200px
    :width: 200px
        :align: right
        :target: https://github.com/domaframework/doma
@@ -36,7 +36,7 @@ User Documentation
 ==================
 
 .. toctree::
-:maxdepth: 2
+  :maxdepth: 2
 
        getting-started
        config
@@ -59,7 +59,7 @@ Developer Documentation
 =======================
 
 .. toctree::
-:maxdepth: 2
+  :maxdepth: 2
 
        development
        integration-test
@@ -68,7 +68,7 @@ About Doma
 ==========
 
 .. toctree::
-:maxdepth: 1
+  :maxdepth: 1
 
        release-notes
        changelog
