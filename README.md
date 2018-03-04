@@ -23,6 +23,7 @@ zh_CN https://github.com/smallclover/doma/edit/master/docs
 |/docs/sources|annotation-processing.rst|annotation-processing-zh.rst|100%|0%|-|
 |/docs/sources|basic.rst|basic-zh.rst|100%|0%|-|
 |/docs/sources|dao.rst|dao-zh.rst|100%|0%|2018/03/03|
+|/docs/sources|domain.rst|domain-zh.rst|100%|0%|2018/03/04|
 
 Notice
 --------
