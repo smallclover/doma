@@ -26,7 +26,7 @@ Eclipse でビルドを行う際のポイントは以下の通りです。
 
   手動で設定するよりも Gradle の eclipse タスクで自動設定することを推奨します。
   詳細については、
-  `domaframework/simple-boilerplate <https://github.com/domaframework/simple-boilerplate>`_ 
+  `domaframework/simple-boilerplate <https://github.com/domaframework/simple-boilerplate>`_
   に含まれる build.gradle と eclipse.gradle を参照ください。
 
 注釈処理の有効化
