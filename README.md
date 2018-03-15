@@ -26,6 +26,7 @@ zh_CN https://github.com/smallclover/doma/edit/master/docs
 |/docs/sources|domain.rst|domain-zh.rst|100%|0%|2018/03/04|
 |/docs/sources|lombok-support.rst|lombok-support-zh.rst|100%|0%|2018/03/08|
 |/docs/sources|development.rst|development-zh.rst|100%|0%|2018/03/13|
+|/docs/sources|getting-started.rst|getting-started-zh.rst|100%|0%|2018/03/15|
 
 
 Notice
