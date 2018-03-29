@@ -101,72 +101,67 @@ SQLファイルのリポジトリ
 
 デフォルトでは ``GreedyCacheSqlFileRepository`` が使用されます。
 
-REQUIRES_NEW 属性のトランザクションとの連動
+关联属性为REQUIRES的事物
 -------------------------------------------
 
-``RequiresNewController`` を ``getRequiresNewController`` メソッドで返してください。
-``RequiresNewController`` は REQUIRES_NEW の属性をもつトランザクションを
-制御するインタフェースです。
+通过 ``getRequiresNewController`` 方法来获得 ``RequiresNewController``。
+ ``RequiresNewController`` 接口用来 控制拥有 REQUIRES_NEW 属性的事务。
 
-このインタフェースは、 ``@TableGenerator`` で、識別子を自動生成する際にしか使われません。
-``@TableGenerator`` を利用しない場合は、この設定項目を考慮する必要はありません。
-また、 ``@TableGenerator`` を利用する場合であっても、
-識別子を採番するための更新ロックが問題にならない程度のトランザクション数であれば、
-設定する必要ありません。
+该接口只在使用 ``@TableGenerator`` 自动生成标识符的时候使用。
+不使用 ``@TableGenerator`` 的时候，不需要考虑该项目。
+又或者使用的事务数量不会产生分配标识符的更新锁问题的时候，也不需要设定。
 
-デフォルトの実装は何の処理もしません。
 
-クラスのロード方法
+默认的实现不会做任何处理。
+
+类的加载方法
 ------------------
 
-``ClassHelper`` を ``getClassHelper`` メソッドで返してください。
-``ClassHelper`` はクラスのロードに関してアプリケーションサーバや
-フレームワークの差異を抽象化するインタフェースです。
+``ClassHelper`` 通过 ``getClassHelper`` 方法得到。
 
-デフォルトの実装は ``java.lang.Class.forName(name)``  を用いてクラスをロードします。
+``ClassHelper`` 是一个对于应用服务器和框架在类加载相关的部分的差异进行抽象化的接口。
 
-例外メッセージに含めるSQLの種別
+默认的实现使用 ``java.lang.Class.forName(name)``  来加载类。
+
+异常信息中包含的SQL类型
 -------------------------------
 
-例外メッセージに含めるSQLのタイプをあらわす ``SqlLogType``
-を ``getExceptionSqlLogType`` メソッドで返してください。
-この値は、Doma がスローする例外にどのような形式のSQLを含めるかを決定します。
+请使用 ``getExceptionSqlLogType`` 方法返回 ``SqlLogType``，
+它表示异常信息中包含的SQL类型。
+该值决定了Doma抛出的异常中包含哪种类型的SQL。
 
-デフォルトの実装では、フォーマットされた SQL を含めます。
+默认的实现包含了已经格式化的 SQL。
 
-未知のカラムのハンドラ
+未知列的处理器
 ----------------------
 
-``UnknownColumnHandler`` を ``getUnknownColumnHandler`` メソッドで返してください。
-``UnknownColumnHandler`` は :doc:`query/select` の結果を :doc:`entity` にマッピングする際、
-エンティティクラスにとって未知のカラムが存在する場合に実行されます。
+请使用 ``getUnknownColumnHandler`` 方法来返回 ``UnknownColumnHandler`` 。
+ ``UnknownColumnHandler`` 处理器在将 :doc:`query/select` 的结果映射到 :doc:`entity` 的时候存在实体类不知道的列的时候执行。
 
-デフォルトでは、 ``UnknownColumnException`` がスローされます。
+默认抛出 ``UnknownColumnException`` 异常。
 
-テーブルやカラムにおけるネーミング規約の制御
+表和列名的命名规约的控制
 --------------------------------------------
+请使用``getNaming`` 方法来返回 ``Naming`` 。
 
-``Naming`` を ``getNaming`` メソッドで返してください。
+``Naming`` 使用来控制在 ``@Entity`` 的name属性中指定（或者不指定）的 ``NamingType``是如何应用的接口。
 
-``Naming`` は、 ``@Entity`` の ``name`` 要素に指定された（もしくは指定されない） ``NamingType``
-をどのように適用するかについて制御するインタフェースです。
-このインタフェースを使うことで、個別のエンティティクラスに ``NamingType`` を指定しなくても
-エンティティのクラス名とプロパティ名からデータベースのテーブル名とカラム名を解決できます。
+使用该接口，即使没有给各个实体类指定 ``NamingType`` 
+也可以从实体类和属性名称中解析数据库表名称和列名称。
 
-``Naming`` が使用される条件は以下の通りです。
+使用 ``Naming`` 条件如下。
 
-* ``@Table`` や ``@Column`` の ``name`` 要素に値が指定されていない。
+* 没有指定 ``@Table`` 和 ``@Column`` 的 ``name`` 属性的值。
 
-一般的なユースケースを実現するための実装は、 ``Naming`` の ``static`` なメンバに定義されています。
+为了实现一般用例的实现，是在 ``Naming`` 的 ``static`` 成员里定义。
 
-デフォルトでは、 ``Naming.NONE`` が使用されます。
-この実装は、エンティティクラスに指定された ``NamingType`` を使い、
-指定がない場合は何の規約も適用しません。
+默认使用、 ``Naming.NONE`` 。
+该实现使用实体类中指定的 ``NamingType`` ， 
+如果没有指定，则不会适用任何规约。
 
-例えば、指定がない場合にスネークケースの大文字を適用したいというケースでは、
-``Naming.SNAKE_UPPER_CASE`` を使用できます。
+比如说，在没有指定却又想使用蛇形大写的方式来表现的时候，请使用 ``Naming.SNAKE_UPPER_CASE`` 。
 
-マップのキーのネーミング規約の制御
+ 映射的键的命名规约的控制
 ----------------------------------
 
 ``MapKeyNaming`` を ``getMapKeyNaming`` メソッドで返してください。
