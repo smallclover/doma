@@ -161,114 +161,114 @@ SQLファイルのリポジトリ
 
 比如说，在没有指定却又想使用蛇形大写的方式来表现的时候，请使用 ``Naming.SNAKE_UPPER_CASE`` 。
 
- 映射的键的命名规约的控制
+映射的键的命名规约的控制
 ----------------------------------
 
-``MapKeyNaming`` を ``getMapKeyNaming`` メソッドで返してください。
-``MapKeyNaming`` は検索結果を ``java.util.Map<String, Object>`` にマッピングする場合に実行されます。
+请使用  ``getMapKeyNaming`` 方法来获得 ``MapKeyNaming`` 。
 
-デフォルトでは、 ``@Select`` などの ``mapKeyNaming`` 要素に指定された規約を適用します。
+在将检索结果映射到  ``java.util.Map<String, Object>`` 的场合，执行 ``MapKeyNaming`` 。
 
-ローカルトランザクションマネージャー
+默认会适用 ``@Select`` 等属性 ``mapKeyNaming`` 指定的规约。
+
+本地事务管理器
 ------------------------------------
 
-``LocalTransactionManager`` を ``getTransactionManager`` メソッドで返してください。
-``getTransactionManager`` メソッドは、デフォルトで
-``UnsupportedOperationException`` をスローします。
+请使用 ``getTransactionManager`` 方法来获得 ``LocalTransactionManager`` 。
+``getTransactionManager`` 方法默认会抛出异常
+``UnsupportedOperationException`` 。
 
 .. note::
 
-  この項目は設定必須ではありませんが、
-  ``org.seasar.doma.jdbc.tx.TransactionManager`` のインタフェースでトランザクションを利用したい場合は設定してください。
-  設定方法については :doc:`transaction` を参照してください。
+  虽然该项目不是必须设定的，但是如果想要使用
+  ``org.seasar.doma.jdbc.tx.TransactionManager`` 接口的事务的时候请务必设定。
+  设定的方法请参照 :doc:`transaction` 。
 
-SQLの識別子の追記
+SQL标识符的追加
 ------------------------------------
 
-``Commenter`` を ``getCommenter`` メソッドで返してください。
-``Commenter`` はSQLの識別子（SQLの発行箇所等を特定するための文字列）をSQLコメントとして追記するためのインタフェースです。
+请使用 ``getCommenter`` 方法来获得 ``Commenter`` 。
+``Commenter`` 是用来将SQL的识别符（用于指定发布SQL的位置的字符串）作为SQL注释追加的接口。
 
-実装クラスには次のものがあります。
+有如下实现类。
 
 * org.seasar.doma.jdbc.CallerCommenter
 
-``CallerCommenter`` は、SQLの呼び出し元のクラス名とメソッド名を識別子として使用します。
+``CallerCommenter`` 使用SQL的调用者的类名称和方法名称作为标识符。
 
-デフォルトの実装では、 識別子を追記しません。
+默认实现不会追加标识符
 
-Command の実装
+Command 的实现
 --------------
 
-``CommandImplementors`` を ``getCommandImplementors`` メソッドで返してください。
-``CommandImplementors`` を実装すると :doc:`query/index` の実行をカスタマイズできます。
+请使用  ``getCommandImplementors`` 方法来获得 ``CommandImplementors`` 。
+实现 ``CommandImplementors`` 类，可以定制 :doc:`query/index` 的执行方式。
 
-たとえば、 JDBC の API を直接呼び出すことができます。
+比如说，直接调用JDBC的API。
 
-Query の実装
+Query 的实现
 ------------
 
-``QueryImplementors`` を ``getQueryImplementors`` メソッドで返してください。
-``QueryImplementors`` を実装すると :doc:`query/index` の内容をカスタマイズできます。
+请使用  ``QueryImplementors`` 方法来获得 ``getQueryImplementors`` 。
+实现``QueryImplementors`` 类，可以定制 :doc:`query/index` 的内容。
 
-たとえば、自動生成される SQL の一部を書き換え可能です。
+比如说，重写一部分自动生成的SQL。
 
-タイムアウト
+超时
 ------------
 
-クエリタイムアウト（秒）をあらわす ``int`` を ``getQueryTimeout`` メソッドで返してください。
-この値はすべての :doc:`query/index` においてデフォルト値として使われます。
+请用 ``getQueryTimeout`` 方法获得表示查询超时（秒）的 ``int`` 数。
+该值作为所有 :doc:`query/index` 的默认值来使用。
 
 最大件数
 --------
 
-SELECT時の最大行数をあらわす ``int`` を ``getMaxRows`` メソッドで返します。
-この値はすべての :doc:`query/select` においてデフォルト値として使われます。
+使用 ``getMaxRows`` 方法获得表示SELECT能够获得最大行数的 ``int`` 数。
+该值作为所有 :doc:`query/select` 的默认值来使用。
 
-フェッチサイズ
+捕获数量
 --------------
 
-SELECT時のフェッチサイズをあらわす ``int`` を ``getFetchSize`` メソッドで返します。
-この値はすべての :doc:`query/select` においてデフォルト値として使われます。
+使用 ``getFetchSize`` 方法获得表示SELECT能够获得最大行数的 ``int`` 数。
+该值作为所有 :doc:`query/select` 的默认值来使用。
 
-バッチサイズ
+批处理数量
 ------------
 
-バッチサイズをあらわす ``int`` を ``getBatchSize`` メソッドで返します。
-この値は :doc:`query/batch-insert` 、:doc:`query/batch-update` 、:doc:`query/batch-delete`
-においてデフォルト値として使われます。
+使用 ``getBatchSize`` 方法来获得表示批处理数量的 ``int`` 。
+该值作为 :doc:`query/batch-insert` 、:doc:`query/batch-update` 、:doc:`query/batch-delete`
+的默认值来使用。
 
-エンティティリスナーの取得
+获取实体监听器
 --------------------------
 
-``EntityListenerProvider`` を ``getEntityListenerProvider`` メソッドで返して下さい。
+请使用 ``getEntityListenerProvider`` 方法 来获得 ``EntityListenerProvider`` 。
 
-``EntityListenerProvider`` の ``get`` メソッドは ``EntityListener`` 実装クラスの ``Class`` と ``EntityListener`` 実装クラスのインスタンスを返す ``Supplier``
-を引数に取り ``EntityListener`` のインスタンスを返します。
-デフォルトの実装では ``Supplier.get`` メソッドを実行して得たインスタンスを返します。
+``EntityListenerProvider`` 的 ``get`` 方法是用来返回 ``EntityListener`` 实现类的 ``Class`` 和 ``EntityListener`` 实现类的实例的 ``Supplier`` 作为参数的 ``EntityListener`` 的实例。默认的实现通过执行 ``Supplier.get`` 方法来获得实例。
 
-``EntityListener`` 実装クラスのインスタンスをDIコンテナから取得したいなど、
-インスタンス取得方法をカスタマイズする場合は ``EntityListenerProvider`` を実装したクラスを作成し、
-``getEntityListenerProvider`` メソッドでそのインスタンスを返すよう設定してください。
 
-JDBC ドライバのロード
+如果想要定制从DI容器中获取 ``EntityListener`` 实现类的实例的时候，请实现 ``EntityListenerProvider`` 类
+将其设置为使用 ``getEntityListenerProvider`` 方法来获得它的实例。
+
+
+加载JDBC驱动程序
 =====================
 
 .. _service provider: http://docs.oracle.com/javase/7/docs/technotes/guides/jar/jar.html#Service%20Provider
 .. _tomcat driver: http://tomcat.apache.org/tomcat-7.0-doc/jndi-datasource-examples-howto.html#DriverManager,_the_service_provider_mechanism_and_memory_leaks
 
-クラスパスが通っていれば JDBC ドライバは
-`サービスプロバイダメカニズム <service provider_>`_ により自動でロードされます。
+如果传递了类路径，则JDBC驱动程序将根据
+`服务提供者机制 <service provider_>`_ 自动加载。
 
 .. warning::
 
-  実行環境によっては、 JDBC ドライバが自動でロードされないことがあります。
-  たとえば Tomcat 上では WEB-INF/lib に配置された
-  `JDBC ドライバは自動でロードされません <tomcat driver_>`_ 。
-  そのような環境においては、その環境に応じた適切は方法を採ってください。
-  たとえば Tomcat 上で動作させるためのには、上記のリンク先の指示に従って
-  ``ServletContextListener`` を利用したロードとアンロードを行ってください。
+  根据执行环境的不同，JDBC 驱动程序可能不会自动加载。
+  例如，在Tomcat上，放置在WEB-INF / lib中的
+  `JDBC 驱动程序不会自动加载 <tomcat driver_>`_ 。
+  在这样的环境下，请采用适合该环境的方法。
+  例如，为了在Tomcat上运行，根据上面链接里的操作使用
+  ``ServletContextListener`` 进行加载和卸载。
 
-定義と利用例
+定义和用法示例
 ============
 
 シンプル
