@@ -5,35 +5,33 @@
 .. contents:: 目录
       :depth: 3
 
-Domaに対する設定は、 ``Confing`` インタフェースの実装クラスで表現します。
-Doma的设置，通过 ``Confing`` 接口的实现类来表示。
+对于Doma的设置，通过 ``Confing`` 接口的实现类来表示。
 
 设置项目
 =================
 
-对于必须的配置和未明确指示的配置将会使用默认值
+对于必须的配置以及未明确指定的配置将会使用默认值
 
 数据源
 ----------------
 
-``DataSource`` を ``getDataSource`` メソッドで返してください。
-ローカルトランザクションを利用する場合は、 ``LocalTransactionDataSource`` を返してください。
-
+通过 ``getDataSource`` 方法来获得 ``DataSource`` 。
+在使用本地事务的场合，使用 ``LocalTransactionDataSource`` 方法获得数据源。
 .. note::
 
-   この項目は設定必須です。
+   该项目是必须设置的。
 
-データソースの名前
+数据源的名称
 ------------------
 
-データソース名をあらわす ``String`` を ``getDataSourceName`` メソッドで返してください。
-データソース名は、複数のデータソースを利用する環境で重要です。
-データソース名はデータソースごとに自動生成される識別子を区別するために使用されます。
-複数データソースを利用する場合は、それぞれ異なる名前を返すようにしてください。
+数据源的名称通过 ``getDataSourceName`` 方法返回。
+在有多个数据源的环境中，数据源的名称是非常重要的。
+通过使用数据名称来区别每个数据源自动生成的标识符。
+如果是多个数据源的情况下，请保证返回的名字是不同的。
 
-デフォルトの実装では、 ``Config`` の実装クラスの完全修飾名が使用されます。
+默认的实现使用 ``Config`` 实现类的全限定名。
 
-データベースの方言
+数据库方言
 --------------------------
 
 ``Dialect`` を ``getDialect`` メソッドで返してください。
@@ -41,19 +39,19 @@ Doma的设置，通过 ``Confing`` 接口的实现类来表示。
 ``Dialect`` には次のものがあります。
 
 +----------------------------+------------------+--------------------------------------+
-| データベース               | Dialect          | 説明                                 |
+| 数据库              | Dialect          | 说明                                 |
 +============================+==================+======================================+
 | DB2                        | Db2Dialect       |                                      |
 +----------------------------+------------------+--------------------------------------+
-| H2 Database Engine 1.2.126 | H212126Dialect   | H2 Database Engine 1.2.126で稼動     |
+| H2 Database Engine 1.2.126 | H212126Dialect   | 在H2 Database Engine 1.2.126上运行     |
 +----------------------------+------------------+--------------------------------------+
-| H2 Database                | H2Dialect        | H2 Database Engine 1.3.171以降に対応 |
+| H2 Database                | H2Dialect        | 对应H2 Database Engine 1.3.171或者更高版本 |
 +----------------------------+------------------+--------------------------------------+
 | HSQLDB                     | HsqldbDialect    |                                      |
 +----------------------------+------------------+--------------------------------------+
-| Microsoft SQL Server 2008  | Mssql2008Dialect | Microsoft SQL Server 2008に対応      |
+| Microsoft SQL Server 2008  | Mssql2008Dialect | 对应Microsoft SQL Server 2008版本      |
 +----------------------------+------------------+--------------------------------------+
-| Microsoft SQL Server       | MssqlDialect     | Microsoft SQL Server 2012以降に対応  |
+| Microsoft SQL Server       | MssqlDialect     | 对应Microsoft SQL Server 2012或者更高版本  |
 +----------------------------+------------------+--------------------------------------+
 | MySQL                      | MySqlDialect     |                                      |
 +----------------------------+------------------+--------------------------------------+
@@ -66,40 +64,39 @@ Doma的设置，通过 ``Confing`` 接口的实现类来表示。
 
 .. note::
 
-   この項目は設定必須です。
+   该项目是必须设定的。
 
-ログ出力ライブラリへのアダプタ
+面向日志输出库的适配器
 ------------------------------
 
-``JdbcLogger`` を ``getJdbcLogger`` メソッドで返してください。
-``JdbcLogger`` はデータベースアクセスに関するログを扱うインタフェースです。
-実装クラスには次のものがあります。
+通过  ``getJdbcLogger`` 返回 ``JdbcLogger`` 。
+ ``JdbcLogger`` 是一个处理与数据库访问相关的日志的接口。。
+实现类如下。
 
 * org.seasar.doma.jdbc.UtilLoggingJdbcLogger
 
-``UtilLoggingJdbcLogger`` は ``java.util.logging`` のロガーを使用する実装で、
-デフォルトで使用されます。
+``UtilLoggingJdbcLogger`` 使用 ``java.util.logging`` 记录器实现、
+默认使用该日志处理。
 
-SQLファイルのリポジトリ
+SQL文件的仓库
 -----------------------
 
-``SqlFileRepository`` を ``getSqlFileRepository`` メソッドで返してください。
-``SqlFileRepository`` は SQL ファイルのリポジトリを扱うインタフェースです。
-実装クラスには次のものがあります。
+通过  ``getSqlFileRepository`` 方法来返回 ``SqlFileRepository`` 。
+``SqlFileRepository`` 是一个处理 SQL 文件存储库的接口。。
+实现类如下。
 
 * org.seasar.doma.jdbc.GreedyCacheSqlFileRepository
 * org.seasar.doma.jdbc.NoCacheSqlFileRepository
 
-``GreedyCacheSqlFileRepository`` は、読み込んだSQLファイルの内容をパースし、
-その結果をメモリが許す限り最大限にキャッシュします。
+``GreedyCacheSqlFileRepository`` 分析读取的SQL文件的内容，
+在内存允许的范围内最大限度缓存分析的内容。
 
-``NoCacheSqlFileRepository`` は、一切キャッシュを行いません。
-毎回、SQLファイルからSQLを読み取りパースします。
+``NoCacheSqlFileRepository`` 会在每次读取时解析，不会缓存到内存中。
 
-メモリの利用に厳しい制限がある環境や、扱うSQLファイルが膨大にある環境では、
-適切なキャッシュアルゴリズムをもった実装クラスを作成し使用してください。
+在内存使用严重受限或有大量 SQL 文件处理的环境中，
+选择合适的使用缓存算法创建的实现类。
 
-デフォルトでは ``GreedyCacheSqlFileRepository`` が使用されます。
+默认情况下使用 ``GreedyCacheSqlFileRepository`` 。
 
 关联属性为REQUIRES的事物
 -------------------------------------------
