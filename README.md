@@ -30,6 +30,8 @@ zh_CN https://github.com/smallclover/doma/edit/master/docs
 |/docs/sources|build.rst|build-zh.rst|100%|0%|2018/03/25|
 |/docs/sources|changelog.rst|changelog-zh.rst|100%|0%|2018/03/25|
 |/docs/sources|config.rst|config-zh.rst|100%|0%|2018/03/29|
+
+
 Notice
 --------
 
