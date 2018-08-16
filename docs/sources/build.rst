@@ -14,6 +14,8 @@ GroupId と ArtifactId の名称は以下の通りです。
 :GroupId: org.seasar.doma
 :ArtifactId: doma
 
+.. _eclipse-build:
+
 Eclipse を使ったビルド
 ======================
 
@@ -56,6 +58,17 @@ Factory Path の設定
 
 |
 
+IntelliJ IDEA を使ったビルド
+================================
+
+IntelliJ IDEA でビルドを行う際のポイントは以下の通りです。
+
+* Module の設定で Inherit project compile output pathを有効にする
+* Preferences の設定で注釈処理を有効にする
+* 注釈処理で生成されたコードが出力されるディレクトリを Generated Sources Root に設定する
+
+詳細な設定方法については :ref:`idea-annotation-processor` を参照してください。
+
 Gradle を使ったビルド
 =====================
 
@@ -82,7 +95,7 @@ Gradle でビルドを行う際のポイントは以下のとおりです。
   }
 
   dependencies {
-      compile "org.seasar.doma:doma:2.20.0-SNAPSHOT"
+      compile "org.seasar.doma:doma:2.19.3-SNAPSHOT"
   }
 
 .. note::
