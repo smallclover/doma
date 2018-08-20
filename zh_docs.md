@@ -16,3 +16,5 @@ zh_CN https://github.com/smallclover/doma/edit/master/docs
 |/docs/sources|config.rst|config-zh.rst|100%|0%|2018/03/29|
 |/docs/sources|faq.rst|faq-zh.rst|100%|0%|2018/05/09|
 |/docs/sources|transaction.rst|transaction-zh.rst|100%|0%|2018/08/16|
+|/docs/sources|integration.rst|integration-zh.rst|100%|0%|2018/08/18|
+|/docs/sources|release-notes.rst|release-notes-zh.rst|100%|0%|2018/08/20|
